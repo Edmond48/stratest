@@ -7,17 +7,17 @@
 
 namespace stratest {
 
-enum FileType {
-    CSV_TICK,
-    CSV_OHLC
-};
-
 class TimeSeries {
-public:
+    public:
+        enum FileType {
+        CSV_TICK,
+        CSV_OHLC
+    };
     //TimeSeries(std::vector<float>);
     TimeSeries(FileType, const std::string&);
 private:
     std::unordered_map<std::string, std::vector<float>> data;
+    constexpr std::vector<std::string> getSchema(FileType);
 };
 
 }

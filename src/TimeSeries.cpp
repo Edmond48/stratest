@@ -20,4 +20,12 @@ TimeSeries::TimeSeries(FileType ft, const std::string& filename) {
     }
 }
 
+constexpr std::vector<std::string> TimeSeries::getSchema(FileType ft) {
+    switch (ft) {
+        case CSV_TICK:  return {"DateTime","Bid","Ask"};
+        case CSV_OHLC:  return {"DateTime","Open","High","Low","Close","Volume"};
+    }
+    return {};
+}
+
 }
